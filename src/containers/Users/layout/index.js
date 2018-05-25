@@ -11,7 +11,7 @@ const Layout = ({ children, title }) => (
 
 Layout.propTypes = {
   children: PropTypes.node,
-  title: PropTypes.node
+  title: PropTypes.node,
 };
 
 export default Layout;

@@ -1,5 +1,6 @@
 import { users as ActionTypes } from '$constants/action-types';
 import makeNestedList from '$helpers/make-nested-list';
+import recursiveRemove from '$helpers/recursive-remove';
 
 const initialState = {
   items: [],
@@ -16,7 +17,7 @@ function reducer(state = initialState, action) {
         items: makeNestedList(action.payload),
         flatItems: action.payload,
         isFetching: false,
-        itemCount: action.payload.length
+        itemCount: action.payload.length,
       });
     }
 
@@ -39,11 +40,11 @@ function reducer(state = initialState, action) {
 
     case ActionTypes.REMOVE: {
       const newState = { ...state };
-      newState.flatItems[action.payload].removed = true;
+      newState.flatItems = recursiveRemove(newState.flatItems, action.payload);
       return Object.assign({}, state, {
         ...newState,
         items: makeNestedList(newState.flatItems),
-        itemCount: newState.flatItems.length,
+        itemCount: newState.flatItems.filter(i => !i.removed).length,
       });
     }
 
