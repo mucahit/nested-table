@@ -81,11 +81,11 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-    fetch: bindActionCreators(fetch, dispatch),
-    collapse: bindActionCreators(collapse, dispatch),
-    remove: bindActionCreators(remove, dispatch),
-  };
+  return bindActionCreators({
+    fetch,
+    collapse,
+    remove,
+  }, dispatch);
 }
 
 Users.propTypes = {
