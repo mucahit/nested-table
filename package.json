@@ -34,7 +34,6 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
-    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
     "redux-saga": "^0.16.0"
@@ -62,7 +61,6 @@
     "node-sass": "^4.9.0",
     "optimize-css-assets-webpack-plugin": "^4.0.1",
     "postcss-loader": "^2.1.5",
-    "react-test-renderer": "^16.4.0",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
     "webpack": "^4.8.3",
