@@ -16,8 +16,8 @@ const Row = ({ item, columns }) => (
       }
     </div>
     {
-      item.collapsed && item.children.map((item, index) => (
-        <Row item={item} columns={columns} key={index}/>
+      item.collapsed && item.children.map((row, index) => (
+        <Row item={row} columns={columns} key={index}/>
       ))
     }
   </div>
