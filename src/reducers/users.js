@@ -3,7 +3,9 @@ import makeNestedList from '$helpers/make-nested-list';
 
 const initialState = {
   items: [],
+  flatItems: [],
   isFetching: true,
+  itemCount: 0,
 };
 
 function reducer(state = initialState, action) {
@@ -14,6 +16,7 @@ function reducer(state = initialState, action) {
         items: makeNestedList(action.payload),
         flatItems: action.payload,
         isFetching: false,
+        itemCount: action.payload.length
       });
     }
 
@@ -40,6 +43,7 @@ function reducer(state = initialState, action) {
       return Object.assign({}, state, {
         ...newState,
         items: makeNestedList(newState.flatItems),
+        itemCount: newState.flatItems.length,
       });
     }
 

@@ -64,7 +64,7 @@ class Users extends Component {
     const { users } = this.props;
 
     return (
-      <Layout>
+      <Layout title={`Users List (${users.itemCount})`}>
         <Table
           items={users.items}
           columns={this.columns}
