@@ -1,5 +1,11 @@
 function makeNestedList(list) {
-  const clonedList = list.map(item => ({ ...item, children: [] }));
+  const clonedList = list.map((item, index) => (
+    {
+      ...item,
+      children: [],
+      absolutePosition: index,
+    }
+  ));
   const nestedList = [];
   const map = {};
 
@@ -7,11 +13,11 @@ function makeNestedList(list) {
     map[clonedList[index].ID] = index;
   }
 
-  clonedList.forEach((item) => {
+  clonedList.filter(i => !i.removed).forEach((item) => {
     if (item.parentID) {
-      clonedList[map[item.parentID]].children.unshift(item);
+      clonedList[map[item.parentID]].children.push(item);
     } else {
-      nestedList.unshift(item);
+      nestedList.push(item);
     }
   });
   return nestedList;

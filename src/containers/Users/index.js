@@ -2,35 +2,74 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetch } from '$actions/users';
+import { fetch, collapse, remove } from '$actions/users';
+import Table from '$components/table';
+import Button from '$components/button';
+import Layout from './layout';
 
 class Users extends Component {
   componentDidMount() {
     this.props.fetch();
   }
 
-  renderList(item) {
-    return (
-      <div key={item.ID} style={{ padding: '15px', background: '#eee', margin: '15px 0', boxShadow: '0 0 15px rgba(0,0,0,.07)' }}>
-        {item.ID} {item.City} {item.Name}
-
-        {
-          item.children.length > 0 &&
-            item.children.map(i => <div className="child" style={{ paddingLeft: '15px' }}>{this.renderList(i)}</div>)
-        }
-      </div>
-    );
+  get columns() {
+    return [
+      {
+        title: '',
+        style: { flex: '.3' },
+        render: item => (
+          <Button
+            onClick={() => this.props.collapse(item.absolutePosition)}
+            disabled={item.children.length < 1}
+          >
+            {
+              (!item.collapsed && '+') || '-'
+            }
+          </Button>
+        ),
+      },
+      {
+        title: 'ID',
+        style: { flex: '.3' },
+        key: 'ID',
+      },
+      {
+        title: 'Name',
+        key: 'Name',
+      },
+      {
+        title: 'City',
+        key: 'City',
+      },
+      {
+        title: 'Phone',
+        key: 'Phone',
+      },
+      {
+        title: '',
+        style: { flex: '.3' },
+        render: item => (
+          <Button
+            onClick={() => this.props.remove(item.absolutePosition)}
+            type="default"
+          >
+            Remove
+          </Button>
+        ),
+      },
+    ];
   }
 
   render() {
     const { users } = this.props;
 
     return (
-      <div>
-        {
-          users.items.map(i => this.renderList(i))
-        }
-      </div>
+      <Layout>
+        <Table
+          items={users.items}
+          columns={this.columns}
+        />
+      </Layout>
     );
   }
 }
@@ -44,12 +83,16 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     fetch: bindActionCreators(fetch, dispatch),
+    collapse: bindActionCreators(collapse, dispatch),
+    remove: bindActionCreators(remove, dispatch),
   };
 }
 
 Users.propTypes = {
   users: PropTypes.object,
   fetch: PropTypes.func,
+  collapse: PropTypes.func,
+  remove: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Users);
