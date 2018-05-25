@@ -9,13 +9,26 @@ class Users extends Component {
     this.props.fetch();
   }
 
+  renderList(item) {
+    return (
+      <div key={item.ID} style={{ padding: '15px', background: '#eee', margin: '15px 0', boxShadow: '0 0 15px rgba(0,0,0,.07)' }}>
+        {item.ID} {item.City} {item.Name}
+
+        {
+          item.children.length > 0 &&
+            item.children.map(i => <div className="child" style={{ paddingLeft: '15px' }}>{this.renderList(i)}</div>)
+        }
+      </div>
+    );
+  }
+
   render() {
     const { users } = this.props;
 
     return (
       <div>
         {
-          users.items.map(i => <div key={i.ID}>{i.City} {i.Name}</div>)
+          users.items.map(i => this.renderList(i))
         }
       </div>
     );

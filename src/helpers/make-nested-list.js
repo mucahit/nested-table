@@ -9,12 +9,12 @@ function makeNestedList(list) {
 
   clonedList.forEach((item) => {
     if (item.parentID) {
-      clonedList[map[item.parentID]].children.push(item);
+      clonedList[map[item.parentID]].children.unshift(item);
     } else {
-      nestedList.push(item);
+      nestedList.unshift(item);
     }
   });
-  return nestedList.reverse();
+  return nestedList;
 }
 
 export default makeNestedList;
