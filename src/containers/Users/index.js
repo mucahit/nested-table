@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetch, collapse, remove } from '$actions/users';
-import Table from '$components/table';
-import Button from '$components/button';
+import { fetch, collapse, remove } from '@actions/users';
+import Table from '@components/table';
+import Button from '@components/button';
 import Layout from './layout';
 
 class Users extends Component {

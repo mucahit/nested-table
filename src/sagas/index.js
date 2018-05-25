@@ -1,9 +1,9 @@
 import { fork } from 'redux-saga/effects';
-import users from './users';
+import watchUsers from './users';
 
 export default function* rootSaga() {
   const watchers = [
-    users,
+    watchUsers,
   ];
 
   yield watchers.map(watcher => fork(watcher));

@@ -1,8 +1,8 @@
-import { users as ActionTypes } from '$constants/action-types';
-import makeNestedList from '$helpers/make-nested-list';
-import recursiveRemove from '$helpers/recursive-remove';
+import { users as ActionTypes } from '@constants/action-types';
+import makeNestedList from '@helpers/make-nested-list';
+import recursiveRemove from '@helpers/recursive-remove';
 
-const initialState = {
+export const initialState = {
   items: [],
   flatItems: [],
   isFetching: true,

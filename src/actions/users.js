@@ -1,4 +1,4 @@
-import { users as ActionTypes } from '$constants/action-types';
+import { users as ActionTypes } from '@constants/action-types';
 
 export const fetch = () => ({
   type: ActionTypes.FETCH,

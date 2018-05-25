@@ -39,13 +39,14 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.js.jsx'],
     alias: {
-      $containers: path.resolve(__dirname, 'src/containers'),
-      $components: path.resolve(__dirname, 'src/components'),
-      $actions: path.resolve(__dirname, 'src/actions'),
-      $constants: path.resolve(__dirname, 'src/constants'),
-      $sagas: path.resolve(__dirname, 'src/sagas'),
-      $reducers: path.resolve(__dirname, 'src/reducers'),
-      $helpers: path.resolve(__dirname, 'src/helpers')
+      '@containers': path.resolve(__dirname, 'src/containers'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@actions': path.resolve(__dirname, 'src/actions'),
+      '@constants': path.resolve(__dirname, 'src/constants'),
+      '@sagas': path.resolve(__dirname, 'src/sagas'),
+      '@reducers': path.resolve(__dirname, 'src/reducers'),
+      '@helpers': path.resolve(__dirname, 'src/helpers'),
+      '@mocks': path.resolve(__dirname, 'src/__mocks__')
     }
   },
   plugins: [
