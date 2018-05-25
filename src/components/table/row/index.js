@@ -6,8 +6,8 @@ const Row = ({ item, columns }) => (
   <div className="row-wrapper">
     <div className="row">
       {
-        columns.map((column, colIndex) => (
-          <div className="col" key={colIndex} style={{ ...column.style }}>
+        columns.map((column, index) => (
+          <div className="col" key={index} style={{ ...column.style }}>
             {
               (column.render && column.render(item)) || item[column.key]
             }
@@ -16,8 +16,8 @@ const Row = ({ item, columns }) => (
       }
     </div>
     {
-      item.collapsed && item.children.map((row, index) => (
-        <Row item={row} columns={columns} key={index}/>
+      item.collapsed && item.children.map((item, index) => (
+        <Row item={item} columns={columns} key={index}/>
       ))
     }
   </div>
