@@ -1,4 +1,9 @@
-function makeNestedList(list) {
+/**
+ * Converts flat array to nested tree.
+ * @param {Array} list Collection of items.
+ * @returns {Array}
+ */
+export default function makeNestedList(list) {
   const clonedList = list.map((item, index) => (
     {
       ...item,
@@ -20,7 +25,6 @@ function makeNestedList(list) {
       nestedList.push(item);
     }
   });
+
   return nestedList;
 }
-
-export default makeNestedList;
