@@ -46,7 +46,7 @@ class Users extends Component {
         key: 'Phone',
       },
       {
-        title: '',
+        title: 'Actions',
         style: { flex: '.3' },
         render: item => (
           <Button
