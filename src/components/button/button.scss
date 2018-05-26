@@ -1,13 +1,14 @@
 .btn {
   border: none;
   background: #ffffff;
+  color: deepskyblue;
   width: 100%;
   padding: 7px;
   cursor: pointer;
   font-weight: bold;
 
   &-primary {
-    background: #000000;
+    background: deepskyblue;
     color: #ffffff;
   }
 
