@@ -14,8 +14,7 @@ export default function makeNestedList(list) {
   const nestedList = [];
   const map = {};
 
-  for (let index = 0; index < clonedList.length; index += 1) {
-    const item = clonedList[index];
+  clonedList.forEach((item, index) => {
     map[item.ID] = index;
 
     if (item.parentID) {
@@ -23,7 +22,7 @@ export default function makeNestedList(list) {
     } else {
       nestedList.push(item);
     }
-  }
+  });
 
   return nestedList;
 }
