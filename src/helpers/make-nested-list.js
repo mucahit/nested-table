@@ -10,21 +10,20 @@ export default function makeNestedList(list) {
       children: [],
       absolutePosition: index,
     }
-  ));
+  )).filter(i => !i.removed);
   const nestedList = [];
   const map = {};
 
   for (let index = 0; index < clonedList.length; index += 1) {
-    map[clonedList[index].ID] = index;
-  }
+    const item = clonedList[index];
+    map[item.ID] = index;
 
-  clonedList.filter(i => !i.removed).forEach((item) => {
     if (item.parentID) {
       clonedList[map[item.parentID]].children.push(item);
     } else {
       nestedList.push(item);
     }
-  });
+  }
 
   return nestedList;
 }
